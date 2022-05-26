@@ -3,6 +3,7 @@ package gobencode
 import (
 	"bufio"
 	"fmt"
+	"io"
 )
 
 func byteToInteger(b byte) (int, bool) {
@@ -14,7 +15,7 @@ func byteToInteger(b byte) (int, bool) {
 func readNBytes(bufioReader *bufio.Reader, len int) (string, error) {
 	buffer := make([]byte, len)
 
-	n, err := bufioReader.Read(buffer)
+	n, err := io.ReadFull(bufioReader, buffer)
 
 	if err != nil {
 		return "", err
