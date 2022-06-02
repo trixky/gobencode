@@ -1,4 +1,5 @@
-package gobencode
+// Package utils provide some utility tools
+package utils
 
 import (
 	"testing"
@@ -6,13 +7,13 @@ import (
 
 func TestByteToInteger(t *testing.T) {
 	for b := byte(0); b < '0'; b++ {
-		if _, ok := byteToInteger(b); ok {
+		if _, ok := ByteToInteger(b); ok {
 			t.Fatalf("byte [\\%x] is not an integer, output: [%v] | expected: [%v]", b, ok, false)
 		}
 	}
 	i := 0
 	for b := byte('0'); b <= '9'; b++ {
-		integer, ok := byteToInteger(b)
+		integer, ok := ByteToInteger(b)
 
 		if !ok {
 			t.Fatalf("byte [\\%x] is an integer: output [%v] | expected [%v]", b, ok, true)
@@ -23,7 +24,7 @@ func TestByteToInteger(t *testing.T) {
 		i++
 	}
 	for b := byte('9' + 1); b < ^byte(0); b++ {
-		if _, ok := byteToInteger(b); ok {
+		if _, ok := ByteToInteger(b); ok {
 			t.Fatalf("byte [\\%x] is not an integer: output [%v] | expected [%v]", b, ok, false)
 		}
 	}
