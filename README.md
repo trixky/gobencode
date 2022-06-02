@@ -44,26 +44,26 @@ if err != nil {
     return err
 }
 
-b := gobencode.bencode.Bencode{
+bc := gobencode.bencode.Bencode{
     Data: data
 }
 
-b.Data = data
+bc.Data = data
 
 // unmarshall and compute only what you need
-if err := b.UnmarshallAnnounce(); err != nil {
+if err := bc.UnmarshallAnnounce(); err != nil {
     return err
 }
-if err := b.UnmarshallAnnounceList(); err != nil {
+if err := bc.UnmarshallAnnounceList(); err != nil {
     return err
 }
-if err := b.RandomizeAnnounceList(); err != nil {
+if err := bc.RandomizeAnnounceList(); err != nil {
     return err
 }
-if err := b.UnmarshallInfo(); err != nil {
+if err := bc.UnmarshallInfo(); err != nil {
     return err
 }
-if err := b.GetInfoHash(); err != nil {
+if err := bc.GetInfoHash(); err != nil {
     return err
 }
 // ...
