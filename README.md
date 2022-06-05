@@ -4,40 +4,24 @@ A simple library for parse and unmarshall the [bencode](https://en.wikipedia.org
 
 ## Usage
 
-```golang
-// quick start method
-
-// parse, unmarshall and compute automatically the input
-bc, err := gobencode.UnmarshallFromReader(reader)
-
-/*
-    available:
-
-    bc.Announce
-    bc.AnnounceList
-    bc.RandomizedAnnounceList
-    bc.Comment
-    bc.CreatedBy
-    bc.CreationDate
-    bc.Info
-        bc.Info.DirectoryName
-        bc.Info.Files
-            bc.Info.Files[...].Length
-            bc.Info.Files[...].Path
-            bc.Info.Files[...].Path
-            bc.Info.Files[...].DecomposedPath
-        bc.Info.PieceLength
-        bc.Info.Pieces
-    bc.InfoHash
-    bc.UrlList
-*/
-
+### Get the package
+```bash
+go get -u github.com/trixky/gobencode
 ```
 
-```golang
-// step by step method
+### Import the package
+```go
+import bencode "github.com/trixky/gobencode"
+```
 
-// parse the input
+### Unmarshall from reader and get a bencode object
+
+```golang
+bc, err := gobencode.UnmarshallFromReader(reader)
+```
+### Or parse and unmarshall manually only what you want
+
+```golang
 data, err := gobencode.ParseFromReader(reader)
 
 if err != nil {
@@ -48,9 +32,6 @@ bc := gobencode.bencode.Bencode{
     Data: data
 }
 
-bc.Data = data
-
-// unmarshall and compute only what you need
 if err := bc.UnmarshallAnnounce(); err != nil {
     return err
 }
@@ -66,24 +47,4 @@ if err := bc.UnmarshallInfo(); err != nil {
 if err := bc.GetInfoHash(); err != nil {
     return err
 }
-// ...
-
-/*
-    available:
-
-    bc.Announce
-    bc.AnnounceList
-    bc.RandomizedAnnounceList
-    bc.Info
-        bc.Info.DirectoryName
-        bc.Info.Files
-            bc.Info.Files[...].Length
-            bc.Info.Files[...].Path
-            bc.Info.Files[...].Path
-            bc.Info.Files[...].DecomposedPath
-        bc.Info.PieceLength
-        bc.Info.Pieces
-    bc.InfoHash
-*/
-
 ```
