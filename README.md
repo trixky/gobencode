@@ -1,6 +1,6 @@
 # gobencode
 
-A simple library for parse and unmarshall the [bencode](https://en.wikipedia.org/wiki/Bencode) format with some utilies.
+A simple library for parse and unmarshall the [bencode](https://en.wikipedia.org/wiki/Bencode) format with some utilities.
 
 ## Usage
 
